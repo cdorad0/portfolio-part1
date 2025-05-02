@@ -4,23 +4,57 @@ author: "Catalina Dorado"
 format: html
 ---
 
-## Quarto
+## Data Description
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+1. Identify your data source.
+> My data source is derived from DataONE [https://search.dataone.org/view/doi%3A10.25494%2FP69885] and is labelled "Reef Check kelp forest long-term MPA monitoring: invertebrate data"
 
-## Running Code
+2. Describe your data, including variables and data types.
+> The data I selected is from Reef Check California (RCCA), a non-profit organization that monitors kelp forests in and outside of California's Marine Protected Areas in efforts to improve costal management, research, and conservation. The data includes invertebrate surveys that consist of visual surveys performed by scuba divers. Key species of invertebrates were monitored at sites divided into two "zones" by depth from inshore to offshore. Invertebrates are counted on 6 transects per site and were counted if they were larger than 2.5 centimeters. Variables include: `Site`, `Day`, `Month`, `Year`, `SurveyDate`, `Transect`, `Classcode`, `Amount`, `Distance`, `Latitude`, `Longitude`, `Depth_ft`, `Temp10m`,	`Visibility`. Data types consists primarly of characters and doubles. 
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+3. Identify the research questions you want to answer.
+> "Are there seasonal patterns in abalone species counts, and have they shifted over time?"
+> "Is there evidence of recovery or decline in abalone populations in surveyed areas from 2006 to 2019?"
 
-```{r}
-1 + 1
-```
 
-You can add options to executable code like this 
+## Data Visualization
 
-```{r}
-#| echo: false
-2 * 2
-```
+1. What do you want your final visualizations to look like?
+> I would like my final visualization to show years/seaons on the x-axis and abalone count on the y-axis, this would be for the standard overall trend of abalone over the years. I also would compare abalone species and their counts over the years/seasons, seeing their comparisons side by side.  
 
-The `echo: false` option disables the printing of code (only output is displayed).
+2. What do you want to highlight on your final visualizations in order to answer your research questions? How do you plan to do that?
+> I want to highlight a change in abalone count overtime and identify any trends assiciated with seaons for my final visualization in order to answer my research question. I plan to utilize functions or aesthetics in my coding that will emphasize this objective. I would like the visuals to be easily identifiable and understandable, allowing the viewer to see point being made. I would utilize visuals such as scatter plots, line charts, bar graphs, histograms, and possibly a density plot.
+
+3. What is missing from your data or would need to change in your data to create these visualizations?
+> I would need to clean up the survey dates so that they are uniform, clear, and easier to work with. That way I am able to categorize the dates based of years. I would also need to isolate data on abalone species, requiring me to filter through and select what I need. I may need to clean the data outside of R as the data set may be too large but this will be TBD. I will also need to change the data types of almost all the variables so that I can work with the data properly.
+
+
+## Data Cleaning
+
+1. Do you need to reformat any variables into different types (e.g. factors, time, dates, strings)? Or remove information from variable values?
+> YES
+
+2. Do you need to deal with any missing data, especially missing data coded other than NA?
+> YES
+
+3. Do you need to filter your data? How?
+> YES; Out of all invertebrate species, I will be filtering through for "abalone". 
+
+4. Do you need to create any new variables? What variables? How?
+> MAYBE; I could, I would need to see how the original data would work and if R studio would be nice to work with it.
+
+5. Do you need to add new data (join) to your data? What data? How?
+> NO; Not necessary
+
+6. Are there any variables you can exclude from your data? 
+> YES; Day, Month (I am hoping to condense with years or SurveyDate), Transect, Distance, Latitude and Longitude (Initial no, but later will not be needed), Temp10m,	Visibility.
+
+7. Do you need pivot your data in any way? Why? How?
+> NO; Longformat works best
+
+8. Do you need to summarize any of the variables? Which ones? How?
+> YES; I may want to condense up some rows so that there is a sum count for a grouped month or a group of months labeled under one year. That way I have data sorted into each year rather than for each month of every year. I will probably have to use a rowsum() function or a groupby(), summarise(), aggregate().
+
+9. What other aspects of your data need to be “fixed” in order to make your data visualizations? 
+> I'll need to do a lot of data filtering to get rid of all other species that are not abalone as the data file is extremely large. I will need to get creative when it comes to visualization, a lot will come with trial and error so aspects of the data that can be "fixed" could be fixed when needed. 
+
